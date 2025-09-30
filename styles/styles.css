@@ -1,0 +1,141 @@
+/* Сброс */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Логотип */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 120px;
+  height: 27px;
+  cursor: pointer;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Навигация */
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #666;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+/* Иконки */
+/* Иконки */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f3f3f3;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.icons img {
+  width: 20px;      /* одинаковый размер */
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.icons img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+
+/* Мобильное меню */
+.menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.pop-up-container {
+  overflow: hidden;
+  width: 100%;
+  height: auto; 
+}
+
+.column {
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.right {
+  float: right; 
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    border-top: 1px solid #eee;
+  }
+
+  .menu-toggle:checked ~ .nav {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}

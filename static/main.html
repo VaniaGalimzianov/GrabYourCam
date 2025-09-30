@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrabYourCam</title>
-    <link rel="stylesheet" href="./styles/style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grab Your Camera</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="/img/logo.svg" alt="Logo" class="logo-img" />
+    </div>
+    <nav class="nav">
+      <a href="index.html">Каталог</a>
+      <a href="#">Контакты</a>
+      <a href="#">Блог</a>
+    </nav>
+    <div class="icons">
+      <img src="/img/account.svg" alt="acc" class="account-img icon" />
+      <img src="/img/basket.svg" alt="bask" class="basket-img icon" />
+    </div>
+  </header>
 
-    <meta property="og:title" content="Заголовок страницы в OG">
-    <meta property="og:description" content="Описание страницы в OG">
-    <meta property="og:image" content="https://example.com/image.jpg">
-    <meta property="og:url" content="https://example.com/">
-  </head>
-  <body>
-    <header>
-      <h1>Личный сайт</h1>
-      <p>Который сделан на основе готового шаблона</p>
-      <nav>
-        <ul>
-          <li><a href="main.html">Эта страница</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <article>
-        <section>
-          <h2>Первая секция</h2>
-          <p>Она обо мне</p>
-          <p>Но может быть и о семантике, я пока не решил.</p>
-        </section>
-        <section>
-          <h2>Вторая секция</h2>
-          <p>Она тоже обо мне</p>
-        </section>
-        <section>
-          <h2>И третья</h2>
-          <p>Вы уже должны были начать догадываться.</p>
-        </section>
+  <main class="main">
+    <section class="hero">
+      <h1>Grab Your <span>Camera</span></h1>
+      <p>Для новичков, для профессионалов, для всех</p>
+      <a href="#products" class="btn">К новинкам ↓</a>
+    </section>
+
+    <section id="products" class="products">
+      <article class="product-card">
+        <img src="/img/contax_g2.png" alt="Contax G2">
+        <h3>Contax G2 + Planar’45</h3>
+        <p class="price">150 000 ₽</p>
+        <button class="add-to-cart" data-id="1" data-name="Contax G2 + Planar’45" data-price="150000">Добавить в корзину</button>
       </article>
-    </main>
-    <footer>
-      <p>Сюда бы я вписал информацию об авторе и ссылки на другие сайты</p>
-    </footer>
-    <!-- сюда можно подключить jquery <script src="scripts/app.js" defer></script> -->
-  </body>
+
+      <article class="product-card">
+        <img src="/img/kodak_gold.png" alt="Kodak Gold 200">
+        <h3>Kodak Gold 200</h3>
+        <p class="price">1 200 ₽</p>
+        <button class="add-to-cart" data-id="2" data-name="Kodak Gold 200" data-price="1200">Добавить в корзину</button>
+      </article>
+    </section>
+  </main>
+</body>
 </html>

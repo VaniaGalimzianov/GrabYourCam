@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grab Your Camera</title>
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
   <header class="header">
@@ -12,9 +12,9 @@
       <img src="/img/logo.svg" alt="Logo" class="logo-img" />
     </div>
     <nav class="nav">
-      <a href="index.html">Каталог</a>
-      <a href="#">Контакты</a>
-      <a href="#">Блог</a>
+      <a href="#products">Каталог</a>
+      <a href="main.html">Контакты</a>
+      <a href="main.html">Блог</a>
     </nav>
     <div class="icons">
       <img src="/img/account.svg" alt="acc" class="account-img icon" />
@@ -24,24 +24,83 @@
 
   <main class="main">
     <section class="hero">
-      <h1>Grab Your <span>Camera</span></h1>
+  <!-- логотип-постер вместо h1 -->
+    <div class="hero-left">
+      <img src="/img/poster_logo.svg" alt="Grab Your Camera" class="poster-logo" />
       <p>Для новичков, для профессионалов, для всех</p>
-      <a href="#products" class="btn">К новинкам ↓</a>
-    </section>
+      <a href="#products" class="btn">К покупкам ↓</a>
+    </div>
+
+    <!-- если у тебя справа был крупный баннер/фото (как в макете) — оставляем контейнер -->
+    <div class="hero-right">
+      <img src="/img/poster.png" alt="Фотограф с камерой" class="hero-photo" />
+    </div>
+  </section>
 
     <section id="products" class="products">
-      <article class="product-card">
-        <img src="/img/contax_g2.png" alt="Contax G2">
+      <article class="product-card" data-id="1">
+        <div class="img-wrap">
+          <img src="/img/contax_g2.png" alt="Contax G2">
+        </div>
+        <small class="vendor">Contax</small>
         <h3>Contax G2 + Planar’45</h3>
-        <p class="price">150 000 ₽</p>
-        <button class="add-to-cart" data-id="1" data-name="Contax G2 + Planar’45" data-price="150000">Добавить в корзину</button>
+
+        <div class="controls">
+          <p class="price">150 000 ₽</p>
+          <button class="add-to-cart"
+                data-id="1"
+                data-name="Contax G2 + Planar’45"
+                data-price="150000"
+                aria-label="Добавить в корзину">
+          <img src="/img/bag-plus.svg" alt="Добавить" class="icon icon-cart">
+        </button>
+        </div>
       </article>
 
-      <article class="product-card">
-        <img src="/img/kodak_gold.png" alt="Kodak Gold 200">
+      <article class="product-card" data-id="2">
+        <div class="img-wrap">
+          <img src="/img/kodak_gold.png" alt="Fodak Gold 200">
+        </div>
+        <small class="vendor">Kodak</small>
         <h3>Kodak Gold 200</h3>
-        <p class="price">1 200 ₽</p>
-        <button class="add-to-cart" data-id="2" data-name="Kodak Gold 200" data-price="1200">Добавить в корзину</button>
+
+        <div class="controls">
+          <p class="price">1 200 ₽</p>
+          <button class="add-to-cart"
+                  data-id="2"
+                  data-name="Kodak Gold 200"
+                  data-price="1200">Добавить</button>
+        </div>
+      </article>
+      <article class="product-card" data-id="2">
+        <div class="img-wrap">
+          <img src="/img/kodak_gold.png" alt="Fodak Gold 200">
+        </div>
+        <small class="vendor">Kodak</small>
+        <h3>Kodak Gold 200</h3>
+
+        <div class="controls">
+          <p class="price">1 200 ₽</p>
+          <button class="add-to-cart"
+                  data-id="2"
+                  data-name="Kodak Gold 200"
+                  data-price="1200">Добавить</button>
+        </div>
+      </article>
+      <article class="product-card" data-id="2">
+        <div class="img-wrap">
+          <img src="/img/kodak_gold.png" alt="Fodak Gold 200">
+        </div>
+        <small class="vendor">Kodak</small>
+        <h3>Kodak Gold 200</h3>
+
+        <div class="controls">
+          <p class="price">1 200 ₽</p>
+          <button class="add-to-cart"
+                  data-id="2"
+                  data-name="Kodak Gold 200"
+                  data-price="1200">Добавить</button>
+        </div>
       </article>
     </section>
   </main>

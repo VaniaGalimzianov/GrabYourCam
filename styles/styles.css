@@ -1,5 +1,8 @@
-/* Сброс */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+/* ========================
+   Base styles / Typography
+   ======================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -7,135 +10,386 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Inter", Arial, sans-serif;
+html {
+  font-size: 16px;
 }
 
-.header {
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #111;
   background: #fff;
-  border-bottom: 1px solid #eee;
+  line-height: 1.5;
+}
+
+/* ссылки */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+a:hover {
+  opacity: 0.7;
+}
+
+/* кнопки */
+.btn {
+  display: inline-block;
+  width: 200px;
+  background: #D9D9D9;
+  color: #000;
+  border-radius: 20px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* ========================
+   Header
+   ======================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 70px;
+  background: #fff;
+  border-bottom: 1px solid #eaeaea;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Логотип */
+/* логотип */
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .logo-img {
-  width: 120px;
-  height: 27px;
-  cursor: pointer;
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
-.logo-text {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* Навигация */
+/* навигация */
 .nav {
   display: flex;
-  gap: 30px;
+  gap: 28px;
+  font-weight: 50;
+  font-size: 0.8rem;
+  color: #867979;
 }
-
 .nav a {
-  text-decoration: none;
-  color: #666;
-  font-size: 16px;
-  transition: color 0.3s;
+  /* padding: 6px 0; */
+  border-bottom: 1px solid transparent;
 }
-
 .nav a:hover {
+  border-bottom: 1px solid #000;
   color: #000;
-  font-weight: bold;
 }
 
-/* Иконки */
-/* Иконки */
+/* иконки справа */
 .icons {
   display: flex;
   align-items: center;
-  gap: 15px;
-  background: #f3f3f3;
-  padding: 6px 12px;
-  border-radius: 20px;
+  gap: 16px;
 }
-
-.icons img {
-  width: 20px;      /* одинаковый размер */
-  height: 20px;
+.icon {
+  height: 24px;
+  width: 24px;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+.icon:hover {
+  opacity: 0.7;
 }
 
-.icons img:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
-}
+/* ========================
+   Main sections
+   ======================== */
 
-
-/* Мобильное меню */
-.menu-toggle {
-  display: none;
-}
-
-.menu-icon {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
-}
-
-.pop-up-container {
-  overflow: hidden;
+.main {
   width: 100%;
-  height: auto; 
+  /* max-width: 1440px; */
+  margin: 0 auto;
+  /* padding: 0 24px; */
 }
 
-.column {
-  float: left;
-  width: 50%;
-  box-sizing: border-box;
-  padding: 10px;
+.hero {
+  margin-top: 32px;
+  margin-bottom: 48px;
 }
 
-.right {
-  float: right; 
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
+/* ========================
+   Responsive tweaks
+   ======================== */
+@media (max-width: 992px) {
+  .header {
+    padding: 14px 20px;
+  }
   .nav {
-    display: none;
+    gap: 18px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .nav {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    margin-top: 6px;
+  }
+  .icons {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* hero layout */
+.hero {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  /* gap: 32px; */
+  padding-left: 70px;
+  padding-right: 50px;
+  /* padding: 48px; */
+  background: #efefef; /* пример, настрой под свой макет */
+  /* border-radius: 20px; */
+}
+
+/* левый блок (логотип + текст + кнопка) */
+.hero-left {
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* сам SVG-логотип (poster) */
+.poster-logo {
+  width: 200px;      /* desktop */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* правый баннер/фото */
+.hero-right {
+  flex: 1 1 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-photo {
+  height: 100%;
+  max-width: 600px;
+  /* border-radius: 6px; */
+  height: auto;
+  object-fit: cover;
+}
+
+/* адаптив: планшет */
+@media (max-width: 992px) {
+  .poster-logo { width: 360px; }
+  .hero { padding: 36px 20px; gap: 20px; }
+}
+
+/* адаптив: смартфон — стек вертикально */
+@media (max-width: 640px) {
+  .hero {
     flex-direction: column;
-    gap: 15px;
-    background: #fff;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    padding: 15px;
-    border-top: 1px solid #eee;
+    align-items: flex-start;
+    padding: 24px 16px;
+    border-radius: 0;
   }
+  .poster-logo { width: 300px; }
+  .hero-right { width: 100%; order: 2; }
+  .hero-left { width: 100%; order: 1; }
+  .btn { align-self: flex-start; }
+}
 
-  .menu-toggle:checked ~ .nav {
-    display: flex;
-  }
 
-  .menu-icon {
-    display: block;
+/* ============================
+   Products grid & product card
+   ============================ */
+
+/* контейнер для списка товаров */
+.products {
+  width: 100%;
+  /* max-width: 1200px; можно подправить под макет */
+  margin: 20px auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+/* отдельная карточка товара */
+.product-card {
+  background: #f7f7f7;
+  border-radius: 18px;
+  padding: 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  min-height: 340px; /* чтобы карточки были примерно одинаковой высоты */
+}
+
+/* hover эффект */
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+/* обёртка для изображения — сохраняет пропорции */
+.product-card .img-wrap {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* современное свойство для соотношения сторон */
+  aspect-ratio: 4 / 3;
+}
+
+/* Само изображение внутри контейнера */
+.product-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* информация о товаре */
+.product-card h3 {
+  font-size: 1.05rem;
+  line-height: 1.2;
+  margin: 0;
+  font-weight: 700;
+  color: #111;
+}
+
+/* производитель / маленький текст (если понадобится) */
+.product-card .vendor {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+/* цена */
+.product-card .price {
+  margin-top: auto; /* подтолкнёт цену/кнопку к низу карточки */
+  font-weight: 100;
+  font-size: 1.06rem;
+  color: #111;
+}
+
+/* группа: цена + кнопка */
+.product-card .controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* кнопка добавления в корзину */
+.add-to-cart {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.add-to-cart:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* неактивное состояние (на случай) */
+.add-to-cart[disabled] {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+/* маленькая иконка корзины справа (если будет) */
+.add-to-cart .icon {
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.icon-cart {
+  width: 40px;
+}
+
+/* мелкие настройки для цвета/шрифтов в карточке */
+.product-card p,
+.product-card small {
+  margin: 0;
+  color: #4b4b4b;
+}
+
+/* =================
+   Responsive tweaks
+   ================= */
+
+@media (max-width: 992px) {
+  .products {
+    gap: 20px;
+    padding: 0 18px;
+    max-width: 980px;
   }
+  .product-card { min-height: 320px; }
+  .product-card h3 { font-size: 1.02rem; }
+  .poster-logo { width: 360px; } /* из предыдущего блока */
+}
+
+@media (max-width: 640px) {
+  .products {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 18px;
+    padding: 0 14px;
+    margin: 28px auto;
+  }
+  .product-card {
+    padding: 14px;
+    border-radius: 14px;
+    min-height: auto;
+  }
+  .product-card .img-wrap { aspect-ratio: 16 / 9; padding: 10px; }
+  .add-to-cart { padding: 9px 12px; font-size: 0.92rem; }
 }

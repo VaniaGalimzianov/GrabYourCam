@@ -1,108 +1,180 @@
-<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grab Your Camera</title>
+  <title>GrabYourCam</title>
   <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="icon" href="/img/window-icon.svg" type="image/x-icon">
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
-    <div class="logo">
-      <img src="/img/logo.svg" alt="Logo" class="logo-img" />
+  <div class="logo">
+    <img src="/img/logo.svg" alt="Logo" class="logo-img" />
+  </div>
+
+  <nav class="nav">
+    <a href="main.html">Каталог</a>
+    <a href="#footer">Контакты</a>
+    <a href="#">Блог</a>
+  </nav>
+
+  <div class="icons">
+    <img src="/img/account.svg" alt="acc" class="account-img icon" />
+    <img src="/img/basket.svg" alt="bask" class="basket-img icon" />
+  </div>
+
+  <!-- бургер появляется только на мобилках -->
+  <div class="burger" id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- мобильное меню -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Каталог</a>
+    <a href="#">Контакты</a>
+    <a href="#">Блог</a>
+    <div class="mobile-icons">
+      <img src="/img/account.svg" alt="acc" class="icon" />
+      <img src="/img/basket.svg" alt="bask" class="icon" />
     </div>
-    <nav class="nav">
-      <a href="#products">Каталог</a>
-      <a href="main.html">Контакты</a>
-      <a href="main.html">Блог</a>
-    </nav>
-    <div class="icons">
-      <img src="/img/account.svg" alt="acc" class="account-img icon" />
-      <img src="/img/basket.svg" alt="bask" class="basket-img icon" />
-    </div>
-  </header>
+  </nav>
+</header>
+
+
+
+  <!-- Hero -->
 
   <main class="main">
     <section class="hero">
-  <!-- логотип-постер вместо h1 -->
-    <div class="hero-left">
-      <img src="/img/poster_logo.svg" alt="Grab Your Camera" class="poster-logo" />
-      <p>Для новичков, для профессионалов, для всех</p>
-      <a href="#products" class="btn">К покупкам ↓</a>
-    </div>
-
-    <!-- если у тебя справа был крупный баннер/фото (как в макете) — оставляем контейнер -->
-    <div class="hero-right">
-      <img src="/img/poster.png" alt="Фотограф с камерой" class="hero-photo" />
-    </div>
-  </section>
-
-    <section id="products" class="products">
-      <article class="product-card" data-id="1">
-        <div class="img-wrap">
-          <img src="/img/contax_g2.png" alt="Contax G2">
+      <div class="hero-left">
+        <div class="hero-left-logo">
+          <img src="/img/poster_logo.svg" alt="Grab Your Camera" class="poster-logo" />
+          <p>Для новичков, для профессионалов, для всех</p>
         </div>
-        <small class="vendor">Contax</small>
-        <h3>Contax G2 + Planar’45</h3>
-
-        <div class="controls">
-          <p class="price">150 000 ₽</p>
-          <button class="add-to-cart"
-                data-id="1"
-                data-name="Contax G2 + Planar’45"
-                data-price="150000"
-                aria-label="Добавить в корзину">
-          <img src="/img/bag-plus.svg" alt="Добавить" class="icon icon-cart">
-        </button>
-        </div>
-      </article>
-
-      <article class="product-card" data-id="2">
-        <div class="img-wrap">
-          <img src="/img/kodak_gold.png" alt="Fodak Gold 200">
-        </div>
-        <small class="vendor">Kodak</small>
-        <h3>Kodak Gold 200</h3>
-
-        <div class="controls">
-          <p class="price">1 200 ₽</p>
-          <button class="add-to-cart"
-                  data-id="2"
-                  data-name="Kodak Gold 200"
-                  data-price="1200">Добавить</button>
-        </div>
-      </article>
-      <article class="product-card" data-id="2">
-        <div class="img-wrap">
-          <img src="/img/kodak_gold.png" alt="Fodak Gold 200">
-        </div>
-        <small class="vendor">Kodak</small>
-        <h3>Kodak Gold 200</h3>
-
-        <div class="controls">
-          <p class="price">1 200 ₽</p>
-          <button class="add-to-cart"
-                  data-id="2"
-                  data-name="Kodak Gold 200"
-                  data-price="1200">Добавить</button>
-        </div>
-      </article>
-      <article class="product-card" data-id="2">
-        <div class="img-wrap">
-          <img src="/img/kodak_gold.png" alt="Fodak Gold 200">
-        </div>
-        <small class="vendor">Kodak</small>
-        <h3>Kodak Gold 200</h3>
-
-        <div class="controls">
-          <p class="price">1 200 ₽</p>
-          <button class="add-to-cart"
-                  data-id="2"
-                  data-name="Kodak Gold 200"
-                  data-price="1200">Добавить</button>
-        </div>
-      </article>
+        <a href="#products" class="btn">К покупкам ↓</a>
+      </div>
+      <div class="hero-right">
+        <img src="/img/poster.png" alt="Фотограф с камерой" class="hero-photo" />
+      </div>
     </section>
+
+<!-- Products -->
+<section id="products" class="products">
+  <article class="product-card" data-id="1">
+    <div class="img-wrap"><img src="/img/contax_g2.png" alt="Contax G2"></div>
+    <small class="vendor">Contax</small>
+    <h3>Contax G2 + Planar’45</h3>
+    <div class="controls">
+      <p class="price">150 000 ₽</p>
+      <button class="add-to-cart" data-id="1" data-name="Contax G2 + Planar’45" data-price="150000">
+        <img src="/img/bag-plus.svg" alt="Добавить" class="icon-cart">
+      </button>
+    </div>
+  </article>
+
+  <article class="product-card" data-id="2">
+    <div class="img-wrap"><img src="/img/kodak_gold.png" alt="Kodak Gold 200"></div>
+    <small class="vendor">Kodak</small>
+    <h3>Kodak Gold 200</h3>
+    <div class="controls">
+      <p class="price">1 200 ₽</p>
+      <button class="add-to-cart" data-id="2" data-name="Kodak Gold 200" data-price="1200">
+        <img src="/img/bag-plus.svg" alt="Добавить" class="icon-cart">
+      </button>
+    </div>
+  </article>
+
+  <article class="product-card" data-id="3">
+    <div class="img-wrap"><img src="/img/leica_m6.png" alt="Leica M6"></div>
+    <small class="vendor">Leica</small>
+    <h3>Leica M6</h3>
+    <div class="controls">
+      <p class="price">240 000 ₽</p>
+      <button class="add-to-cart" data-id="3" data-name="Leica M6" data-price="240000">
+        <img src="/img/bag-plus.svg" alt="Добавить" class="icon-cart">
+      </button>
+    </div>
+  </article>
+
+  <article class="product-card" data-id="4">
+    <div class="img-wrap"><img src="/img/mamiya_rb67.png" alt="Mamiya RB67"></div>
+    <small class="vendor">Mamiya</small>
+    <h3>Mamiya RB67</h3>
+    <div class="controls">
+      <p class="price">70 000 ₽</p>
+      <button class="add-to-cart" data-id="4" data-name="Mamiya RB67" data-price="70000">
+        <img src="/img/bag-plus.svg" alt="Добавить" class="icon-cart">
+      </button>
+    </div>
+  </article>
+
+  <article class="product-card" data-id="5">
+    <div class="img-wrap"><img src="/img/cinestill_800t.png" alt="Cinestill 800T"></div>
+    <small class="vendor">Cinestill</small>
+    <h3>Cinestill 800T</h3>
+    <div class="controls">
+      <p class="price">2 400 ₽</p>
+      <button class="add-to-cart" data-id="5" data-name="Cinestill 800T" data-price="2400">
+        <img src="/img/bag-plus.svg" alt="Добавить" class="icon-cart">
+      </button>
+    </div>
+  </article>
+
+  <article class="product-card" data-id="6">
+    <div class="img-wrap"><img src="/img/pentax_k1000.png" alt="Pentax K1000"></div>
+    <small class="vendor">Pentax</small>
+    <h3>Pentax K1000</h3>
+    <div class="controls">
+      <p class="price">20 000 ₽</p>
+      <button class="add-to-cart" data-id="6" data-name="Pentax K1000" data-price="20000">
+        <img src="/img/bag-plus.svg" alt="Добавить" class="icon-cart">
+      </button>
+    </div>
+  </article>
+
+  <article class="product-card" data-id="7">
+    <div class="img-wrap"><img src="/img/fuji_provia_100f.png" alt="Fuji Provia 100F"></div>
+    <small class="vendor">Fujifilm</small>
+    <h3>Fuji Provia 100F</h3>
+    <div class="controls">
+      <p class="price">2 000 ₽</p>
+      <button class="add-to-cart" data-id="7" data-name="Fuji Provia 100F" data-price="2000">
+        <img src="/img/bag-plus.svg" alt="Добавить" class="icon-cart">
+      </button>
+    </div>
+  </article>
+
+  <article class="product-card" data-id="8">
+    <div class="img-wrap"><img src="/img/olympus_mju2.png" alt="Olympus Mju II"></div>
+    <small class="vendor">Olympus</small>
+    <h3>Olympus Mju II</h3>
+    <div class="controls">
+      <p class="price">25 000 ₽</p>
+      <button class="add-to-cart" data-id="8" data-name="Olympus Mju II" data-price="25000">
+        <img src="/img/bag-plus.svg" alt="Добавить" class="icon-cart">
+      </button>
+    </div>
+  </article>
+</section>
+
   </main>
+
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="/img/logo.svg" alt="Logo" class="footer-logo" />
+        <p>© 2025 GrabYourCamera</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#">О компании</a>
+        <a href="#">Доставка</a>
+        <a href="#">Помощь</a>
+      </nav>
+    </div>
+  </footer>
 </body>
+<script src="/scripts/script.js"></script>
 </html>

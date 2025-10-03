@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина — GrabYourCam</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<script>
+  renderCart();
+</script>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <a href="main.html"><img src="/img/logo.svg" alt="Logo" class="logo-img" /></a>
+    </div>
+
+    <nav class="nav">
+      <a href="main.html">Каталог</a>
+      <a href="#footer">Контакты</a>
+      <a href="#">Блог</a>
+    </nav>
+
+    <div class="icons">
+      <img src="/img/account.svg" alt="acc" class="account-img icon" />
+      <a href="cart.html">
+        <img src="/img/basket.svg" alt="bask" class="basket-img icon" />
+      </a>
+    </div>
+  </header>
+
+  <!-- Cart -->
+  <main class="cart-page">
+    <h2>Ваша корзина</h2>
+    <div id="cart-items" class="cart-items"></div>
+
+    <div class="cart-summary">
+      <h3>Итого: <span id="cart-total">0 ₽</span></h3>
+    </div>
+
+    <form class="order-form">
+      <label>ФИО:<br><input type="text" required></label><br>
+      <label>Телефон:<br><input type="tel" required></label><br>
+      <label>Адрес:<br><input type="text" required></label><br>
+      <button type="button" id="create-order" class="btn">Создать заказ</button>
+    </form>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="/img/logo.svg" alt="Logo" class="footer-logo" />
+        <p>© 2025 GrabYourCamera</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="#">О компании</a>
+        <a href="#">Доставка</a>
+        <a href="#">Помощь</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/scripts/script.js"></script>
+</body>
+</html>

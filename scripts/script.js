@@ -104,7 +104,7 @@ function renderCart() {
       <div class="cart-sum">${itemTotal.toLocaleString()} ₽</div>
 
       <button class="remove" data-index="${index}" aria-label="Удалить">
-        <img src="../img/trash.svg" alt="Удалить" />
+        <img src="https://github.com/VaniaGalimzianov/GrabYourCam/blob/main/img/trash.svg" alt="Удалить" />
       </button>
     `;
 

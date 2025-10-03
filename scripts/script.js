@@ -25,118 +25,136 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Добавление товаров (на странице каталога) ---
-  const addButtons = document.querySelectorAll('.add-to-cart');
-  if (addButtons && addButtons.length) {
-    addButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.dataset.id;
-        const name = btn.dataset.name;
-        const price = Number(btn.dataset.price) || 0;
+  // ====== Добавление товаров (на странице каталога) ======
+const addButtons = document.querySelectorAll('.add-to-cart');
+if (addButtons && addButtons.length) {
+  addButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = btn.dataset.id;
+      const name = btn.dataset.name;
+      const price = Number(btn.dataset.price) || 0;
 
-        const cart = loadCart();
-        const exist = cart.find(it => String(it.id) === String(id));
-        if (exist) {
-          exist.quantity = Number(exist.quantity || 0) + 1;
-        } else {
-          cart.push({ id: String(id), name: String(name), price: price, quantity: 1 });
-        }
-        saveCart(cart);
-        // небольшой UX: обновить счётчик в шапке сразу
-        updateHeaderCartCount();
-      });
+      // ищем карточку товара
+      const card = btn.closest('.product-card');
+      const imgEl = card ? card.querySelector('.img-wrap img') : null;
+      const image = imgEl ? imgEl.getAttribute('src') : '';
+
+      const cart = loadCart();
+      const exist = cart.find(it => String(it.id) === String(id));
+      if (exist) {
+        exist.quantity = Number(exist.quantity || 0) + 1;
+      } else {
+        cart.push({ 
+          id: String(id), 
+          name: String(name), 
+          price: price, 
+          quantity: 1,
+          image: image   // ✅ сохраняем ссылку на картинку
+        });
+      }
+      saveCart(cart);
     });
-  }
+  });
+}
 
   // --- Рендер корзины (на cart.html) ---
-  function renderCart() {
-    const container = document.getElementById('cart-items');
-    const totalEl = document.getElementById('cart-total');
+function renderCart() {
+  const container = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
 
-    if (!container || !totalEl) return; // не на странице корзины — выходим
+  if (!container || !totalEl) return;
 
-    const cart = loadCart();
-    container.innerHTML = '';
+  const cart = loadCart();
+  container.innerHTML = '';
 
-    if (!cart.length) {
-      container.innerHTML = '<p class="empty-cart">Ваша корзина пуста.</p>';
-      totalEl.textContent = '0 ₽';
-      return;
-    }
+  if (!cart.length) {
+    container.innerHTML = '<p class="empty-cart">Ваша корзина пуста.</p>';
+    totalEl.textContent = '0 ₽';
+    return;
+  }
 
-    let total = 0;
+  let total = 0;
 
-    cart.forEach((item, index) => {
-      const qty = Number(item.quantity || 0);
-      const itemPrice = Number(item.price || 0);
-      const itemTotal = itemPrice * qty;
-      total += itemTotal;
+  cart.forEach((item, index) => {
+    const qty = Number(item.quantity || 0);
+    const itemPrice = Number(item.price || 0);
+    const itemTotal = itemPrice * qty;
+    total += itemTotal;
 
-      const el = document.createElement('div');
-      el.className = 'cart-item';
+    const el = document.createElement('div');
+    el.className = 'cart-item';
 
-      el.innerHTML = `
+    el.innerHTML = `
+      <div class="cart-left">
+        <img src="${escapeHtml(item.image || '')}" 
+            alt="${escapeHtml(item.name)}" 
+            class="cart-thumb" />
         <div class="cart-info">
           <div class="cart-name">${escapeHtml(String(item.name))}</div>
-          <div class="cart-price">${Number(item.price).toLocaleString()} ₽</div>
+          <div class="cart-price">${itemPrice.toLocaleString()} ₽</div>
         </div>
+      </div>
 
-        <div class="cart-controls">
-          <button class="decrease" data-index="${index}" aria-label="Уменьшить">−</button>
-          <span class="qty">${qty}</span>
-          <button class="increase" data-index="${index}" aria-label="Увеличить">+</button>
-        </div>
+      <div class="cart-controls">
+        <button class="decrease" data-index="${index}" aria-label="Уменьшить">−</button>
+        <span class="qty">${qty}</span>
+        <button class="increase" data-index="${index}" aria-label="Увеличить">+</button>
+      </div>
 
-        <div class="cart-sum">${itemTotal.toLocaleString()} ₽</div>
+      <div class="cart-sum">${itemTotal.toLocaleString()} ₽</div>
 
-        <button class="remove" data-index="${index}" aria-label="Удалить">🗑</button>
-      `;
+      <button class="remove" data-index="${index}" aria-label="Удалить">
+        <img src="/img/trash.svg" alt="Удалить" />
+      </button>
+    `;
 
-      container.appendChild(el);
+    container.appendChild(el);
+  });
+
+  totalEl.textContent = total.toLocaleString() + ' ₽';
+
+  // обработчики (+ / − / удалить)
+  container.querySelectorAll('.increase').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.index);
+      const cart = loadCart();
+      if (cart[idx]) {
+        cart[idx].quantity++;
+        saveCart(cart);
+        renderCart();
+      }
     });
+  });
 
-    totalEl.textContent = total.toLocaleString() + ' ₽';
-
-    // Навесим обработчики на динамически созданные кнопки
-    container.querySelectorAll('.increase').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = Number(btn.dataset.index);
-        const cart = loadCart();
-        if (cart[idx]) {
-          cart[idx].quantity = Number(cart[idx].quantity || 0) + 1;
-          saveCart(cart);
-          renderCart();
-        }
-      });
-    });
-
-    container.querySelectorAll('.decrease').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = Number(btn.dataset.index);
-        const cart = loadCart();
-        if (cart[idx]) {
-          if (cart[idx].quantity > 1) {
-            cart[idx].quantity = Number(cart[idx].quantity) - 1;
-          } else {
-            cart.splice(idx, 1);
-          }
-          saveCart(cart);
-          renderCart();
-        }
-      });
-    });
-
-    container.querySelectorAll('.remove').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = Number(btn.dataset.index);
-        const cart = loadCart();
-        if (cart[idx]) {
+  container.querySelectorAll('.decrease').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.index);
+      const cart = loadCart();
+      if (cart[idx]) {
+        if (cart[idx].quantity > 1) {
+          cart[idx].quantity--;
+        } else {
           cart.splice(idx, 1);
-          saveCart(cart);
-          renderCart();
         }
-      });
+        saveCart(cart);
+        renderCart();
+      }
     });
-  }
+  });
+
+  container.querySelectorAll('.remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.index);
+      const cart = loadCart();
+      if (cart[idx]) {
+        cart.splice(idx, 1);
+        saveCart(cart);
+        renderCart();
+      }
+    });
+  });
+}
+
 
   // --- Создать заказ ---
   const orderBtn = document.getElementById('create-order');

@@ -156,8 +156,9 @@ transition: transform 0.12s ease, opacity 0.12s ease;
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
-  background: #f7f7f7;
-  border-radius: 16px;
+  background: linear-gradient(white, 10%, #f7f7f7);
+  /* background: #f7f7f7; */
+  border-radius: 50px;
 }
 
 .cart-items {
@@ -240,4 +241,15 @@ transition: transform 0.12s ease, opacity 0.12s ease;
 
 .order-form .btn:hover {
   opacity: 0.9;
+}
+
+.cart-thumb {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+poster-logo-cart {
+  text-align: center;
 }
